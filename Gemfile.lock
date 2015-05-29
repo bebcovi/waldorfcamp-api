@@ -1,0 +1,98 @@
+PATH
+  remote: .
+  specs:
+    waldorfcamp (0.0.1)
+      dotenv
+      flickr-objects
+      koala
+      pg
+      puma
+      rake
+      roda
+      roda-symbolized_params
+      sequel
+      yaks
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    abstract_type (0.0.7)
+    adamantium (0.2.0)
+      ice_nine (~> 0.11.0)
+      memoizable (~> 0.4.0)
+    addressable (2.3.8)
+    anima (0.2.0)
+      abstract_type (~> 0.0.7)
+      adamantium (~> 0.1)
+      equalizer (~> 0.0.8)
+    attribs (1.0.0)
+      anima (~> 0.2.0)
+    coderay (1.1.0)
+    concord (0.1.5)
+      adamantium (~> 0.2.0)
+      equalizer (~> 0.0.9)
+    dotenv (2.0.1)
+    equalizer (0.0.11)
+    faraday (0.9.1)
+      multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.9.1)
+      faraday (>= 0.7.4, < 0.10)
+    flickr-objects (0.6.0)
+      faraday (>= 0.7.6)
+      faraday_middleware (>= 0.8)
+      multi_xml (~> 0.4)
+      simple_oauth (~> 0.3.1)
+    ice_nine (0.11.1)
+    inflection (1.0.0)
+    koala (2.0.0)
+      addressable
+      faraday
+      multi_json
+    memoizable (0.4.2)
+      thread_safe (~> 0.3, >= 0.3.1)
+    method_source (0.8.2)
+    minitest (5.6.1)
+    minitest-hooks (1.0.1)
+    multi_json (1.11.0)
+    multi_xml (0.5.5)
+    multipart-post (2.0.0)
+    pg (0.18.1)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    puma (2.11.3)
+      rack (>= 1.1, < 2.0)
+    rack (1.6.1)
+    rack-accept (0.4.5)
+      rack (>= 0.4)
+    rack-test (0.6.3)
+      rack (>= 1.0)
+    rake (10.4.2)
+    roda (2.3.0)
+      rack
+    roda-symbolized_params (0.0.2)
+    sequel (4.22.0)
+    simple_oauth (0.3.1)
+    slop (3.6.0)
+    thread_safe (0.3.5)
+    uri_template (0.6.0)
+    yaks (0.10.0)
+      abstract_type (~> 0.0.7)
+      adamantium (~> 0.2.0)
+      anima (~> 0.2.0)
+      attribs (~> 1.0)
+      concord (~> 0.1.4)
+      inflection (~> 1.0)
+      rack-accept (~> 0.4.5)
+      uri_template (~> 0.6.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  minitest
+  minitest-hooks
+  pry
+  rack-test
+  waldorfcamp!
