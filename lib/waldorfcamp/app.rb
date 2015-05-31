@@ -13,6 +13,10 @@ module Waldorfcamp
     plugin :json, classes: Serializer::CLASSES, serializer: Serializer
     plugin :symbolized_params
 
+    unless ENV["RACK_ENV"] == "production"
+      plugin :default_headers, "Access-Control-Allow-Origin"=>"*"
+    end
+
     route do |r|
       r.get "photos" do
         page_number = Integer(params.fetch(:page))
