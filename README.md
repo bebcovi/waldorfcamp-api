@@ -38,7 +38,7 @@ Content-Type: application/json
           "height": 350,
           "url": "https://example.com/medium.jpg"
         },
-        "small": {
+        "large": {
           "width": 800,
           "height": 720,
           "url": "https://example.com/large.jpg"
