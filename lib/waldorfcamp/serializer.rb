@@ -33,7 +33,7 @@ module Waldorfcamp
   end
 
   class PhotoMapper < Yaks::Mapper
-    attributes :id, :description, :small, :medium, :large
+    attributes :id, :description, :small, :medium, :large, :original
 
     def small
       object.images["small"]
@@ -45,6 +45,10 @@ module Waldorfcamp
 
     def large
       object.images["large"]
+    end
+
+    def original
+      object.images["original"]
     end
   end
 end
