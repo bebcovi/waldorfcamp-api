@@ -42,6 +42,11 @@ Content-Type: application/json
           "width": 800,
           "height": 720,
           "url": "https://example.com/large.jpg"
+        },
+        "original": {
+          "width": 1024,
+          "height": 800,
+          "url": "https://example.com/original.jpg"
         }
       }
     }

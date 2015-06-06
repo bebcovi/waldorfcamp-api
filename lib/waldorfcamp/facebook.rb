@@ -24,6 +24,13 @@ module Waldorfcamp
             } if key
           end
 
+        original_image = photo["images"].max_by { |image| image["width"] }
+        images["original"] = {
+          "width"  => original_image.fetch("width"),
+          "height" => original_image.fetch("height"),
+          "url"    => original_image.fetch("source"),
+        }
+
         {
           id:          photo.fetch("id"),
           description: photo["name"], # not mandatory

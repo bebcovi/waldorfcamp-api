@@ -25,6 +25,14 @@ module Waldorfcamp
           } if key
         end
 
+        original_photo = photo.original
+        raise "no original photo for flickr image #{photo.id}" if original_photo.width.nil?
+        images["original"] = {
+          "width"  => original_photo.width,
+          "height" => original_photo.height,
+          "url"    => original_photo.source_url,
+        }
+
         {
           id:          photo.id,
           description: photo.title,

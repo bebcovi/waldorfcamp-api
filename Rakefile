@@ -69,7 +69,7 @@ def cache_photos(source)
     )
   end
 
-  DB[:photos].delete
+  DB[:photos].where(source: source).delete
   DB[:photos].multi_insert(photos)
 
   puts "#{photos.count} #{source.capitalize} photos stored"
