@@ -4,7 +4,7 @@ module Waldorfcamp
   class Photo < Sequel::Model
     dataset_module do
       def newest
-        order{uploaded_at.desc}
+        reverse(:uploaded_at)
       end
 
       def tagged_with(tags)

@@ -29,7 +29,7 @@ namespace :db do
 
     if migrate
       args += %W[-m db/migrations]
-      args += %W[-M #{migrate}] if Integer === migrate
+      args += %W[-M #{migrate}] if String === migrate
     end
 
     args += %W[#{ENV["DATABASE_URL"] || "postgres:///waldorfcamp"}]

@@ -36,6 +36,7 @@ module Waldorfcamp
           description: photo["name"], # not mandatory
           images:      images,
           uploaded_at: photo.fetch("created_time"),
+          tags:        "",
         }
       end
     end
