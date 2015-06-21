@@ -1,0 +1,16 @@
+defaults: &defaults
+  adapter: postgres
+  encoding: unicode
+  pool: 5
+  min_messages: warning
+  host: localhost
+  database: waldorfcamp
+
+production:
+  <<: *defaults
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults

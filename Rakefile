@@ -32,7 +32,7 @@ namespace :db do
       args += %W[-M #{migrate}] if String === migrate
     end
 
-    args += %W[#{ENV["DATABASE_URL"] || "postgres:///waldorfcamp"}]
+    args += %W[-e #{ENV["RACK_ENV"] || "development"} config/database.yml]
 
     sh ["sequel", *args].join(" ")
   end
@@ -58,7 +58,7 @@ task :setup do
   require "waldorfcamp"
   require "dotenv"
 
-  Dotenv.load! unless ENV["RACK_ENV"] == "production"
+  Dotenv.load!
 end
 
 def cache_photos(source)

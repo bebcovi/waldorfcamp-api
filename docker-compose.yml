@@ -1,0 +1,14 @@
+db:
+  image: postgres:9.4.4
+  ports:
+    - "5432:5432"
+
+web:
+  build: .
+  command: "bundle exec puma -t 5:5 -w 4 -p 3000 -b 'tcp://0.0.0.0'"
+  ports:
+    - "3000:3000"
+  links:
+    - db
+  volumes:
+    - .:/waldorfcamp

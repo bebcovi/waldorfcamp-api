@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.summary       = "The API endpoint used internally by http://waldorfcamp.net"
   gem.homepage      = "https://github.com/twin/waldorfcamp"
 
-  gem.authors       = ["Janko Marohnić"]
+  gem.authors       = ["Janko Marohnic"]
   gem.email         = ["janko.marohnic@gmail.com"]
 
   gem.files         = Dir["README.md", "lib/**/*"]
@@ -19,7 +19,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency "roda"
   gem.add_dependency "roda-symbolized_params"
   gem.add_dependency "yaks"
-  gem.add_dependency "puma"
+  gem.add_dependency "unicorn"
 
   # Database
   gem.add_dependency "sequel"

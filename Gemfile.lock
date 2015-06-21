@@ -6,11 +6,11 @@ PATH
       flickr-objects
       koala
       pg
-      puma
       rake
       roda
       roda-symbolized_params
       sequel
+      unicorn
       yaks
 
 GEM
@@ -44,6 +44,7 @@ GEM
       simple_oauth (~> 0.3.1)
     ice_nine (0.11.1)
     inflection (1.0.0)
+    kgio (2.9.3)
     koala (2.0.0)
       addressable
       faraday
@@ -53,7 +54,7 @@ GEM
     method_source (0.8.2)
     minitest (5.6.1)
     minitest-hooks (1.0.1)
-    multi_json (1.11.0)
+    multi_json (1.11.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     pg (0.18.1)
@@ -61,13 +62,12 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    puma (2.11.3)
-      rack (>= 1.1, < 2.0)
     rack (1.6.1)
     rack-accept (0.4.5)
       rack (>= 0.4)
     rack-test (0.6.3)
       rack (>= 1.0)
+    raindrops (0.13.0)
     rake (10.4.2)
     roda (2.3.0)
       rack
@@ -76,6 +76,10 @@ GEM
     simple_oauth (0.3.1)
     slop (3.6.0)
     thread_safe (0.3.5)
+    unicorn (4.9.0)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
     uri_template (0.6.0)
     yaks (0.10.0)
       abstract_type (~> 0.0.7)
