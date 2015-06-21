@@ -8,6 +8,8 @@ defaults: &defaults
 
 production:
   <<: *defaults
+  username: deploy
+  password: foobar
 
 development:
   <<: *defaults
