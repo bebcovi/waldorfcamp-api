@@ -20,6 +20,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency "roda-symbolized_params"
   gem.add_dependency "yaks"
   gem.add_dependency "unicorn"
+  gem.add_dependency "rack-cors"
 
   # Database
   gem.add_dependency "sequel"
