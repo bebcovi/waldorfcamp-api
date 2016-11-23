@@ -22,28 +22,23 @@ class AppTest < Minitest::Test
 
     attributes = body["data"][0]["attributes"]
 
-    assert_includes attributes.keys, "small"
-    assert_includes attributes.keys, "medium"
-    assert_includes attributes.keys, "large"
-    assert_includes attributes.keys, "original"
-
-    assert_includes attributes.keys, "tags"
-    assert_includes attributes.keys, "description"
-    assert_includes attributes.keys, "source"
-    assert_includes attributes.keys, "uploaded_at"
+    refute_equal nil, attributes["url"]
+    refute_equal nil, attributes["width"]
+    refute_equal nil, attributes["height"]
+    refute_equal nil, attributes["tags"]
+    refute_equal nil, attributes["uploaded_at"]
   end
 
   def test_ordering
     get "/photos", page: 1, perPage: 25
-    attributes = body["data"][0]["attributes"]
-    assert_equal "facebook", attributes.fetch("source")
+    assert_equal 25, body["data"].count
   end
 
   def test_tags
-    get "/photos", page: 1, perPage: 25, tags: "caxixi"
+    get "/photos", page: 1, perPage: 25, tags: "mime"
     refute_empty body["data"]
 
-    get "/photos", page: 1, perPage: 25, tags: "caxixi,workshop"
+    get "/photos", page: 1, perPage: 25, tags: "mime,workshop"
     refute_empty body["data"]
 
     get "/photos", page: 1, perPage: 25, tags: "foo"

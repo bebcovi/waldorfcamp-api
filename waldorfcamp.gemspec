@@ -14,7 +14,6 @@ Gem::Specification.new do |gem|
   gem.files         = Dir["README.md", "lib/**/*"]
   gem.require_path  = "lib"
 
-
   # Web
   gem.add_dependency "roda"
   gem.add_dependency "roda-symbolized_params"
@@ -27,8 +26,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency "pg"
 
   # Photos
-  gem.add_dependency "flickr-objects"
-  gem.add_dependency "koala"
+  gem.add_dependency "cloudinary"
   gem.add_dependency "dotenv"
 
   # Development

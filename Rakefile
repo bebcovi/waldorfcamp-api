@@ -3,6 +3,7 @@ require "rake/testtask"
 Rake::TestTask.new do |t|
   t.libs << "test"
   t.test_files = FileList['test/**/*_test.rb']
+  t.warning = false
 end
 
 task :default => :test
@@ -38,14 +39,24 @@ namespace :db do
   end
 end
 
-task :cache_photos => [:cache_facebook_photos, :cache_flickr_photos]
+task :cache_photos => :setup do
+  DB[:photos].delete
+  count = 0
 
-task :cache_facebook_photos => :setup do
-  cache_photos("facebook")
-end
+  Waldorfcamp.cloudinary.photos do |photos|
+    records = photos.map do |photo|
+      photo.merge(
+        source: "cloudinary",
+        images: Sequel.pg_jsonb(photo[:images])
+      )
+    end
 
-task :cache_flickr_photos => :setup do
-  cache_photos("flickr")
+    DB[:photos].multi_insert(records)
+
+    count += records.count
+  end
+
+  puts "#{count} cloudinary photos stored"
 end
 
 task :console => :setup do
@@ -59,18 +70,4 @@ task :setup do
   require "dotenv"
 
   Dotenv.load!
-end
-
-def cache_photos(source)
-  photos = Waldorfcamp.send(source).photos.map do |photo|
-    photo.merge(
-      source: source,
-      images: Sequel.pg_jsonb(photo[:images]),
-    )
-  end
-
-  DB[:photos].where(source: source).delete
-  DB[:photos].multi_insert(photos)
-
-  puts "#{photos.count} #{source.capitalize} photos stored"
 end

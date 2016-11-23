@@ -1,17 +1,16 @@
 require "waldorfcamp/app"
-require "waldorfcamp/facebook"
-require "waldorfcamp/flickr"
+require "waldorfcamp/cloudinary"
 
 module Waldorfcamp
   def self.app
     App.freeze.app
   end
 
-  def self.facebook
-    Facebook.new(ENV.fetch("FACEBOOK_ACCESS_TOKEN"))
-  end
-
-  def self.flickr
-    Flickr.new(ENV.fetch("FLICKR_API_KEY"), ENV.fetch("FLICKR_USER"))
+  def self.cloudinary
+    Cloudinary.new(
+      cloud_name: ENV.fetch("CLOUDINARY_NAME"),
+      api_key:    ENV.fetch("CLOUDINARY_KEY"),
+      api_secret: ENV.fetch("CLOUDINARY_SECRET"),
+    )
   end
 end
