@@ -2,9 +2,13 @@ require "roda"
 require "sequel"
 require "yaml"
 
-db_config = YAML.load_file("config/database.yml")
-db_config = db_config.fetch(ENV["RACK_ENV"] || "development")
-DB = Sequel.connect(db_config)
+if ENV["RACK_ENV"] == "production"
+  DB = Sequel.connect(ENV.fetch("DATABASE_URL"))
+else
+  db_config = YAML.load_file("config/database.yml")
+  db_config = db_config.fetch(ENV["RACK_ENV"] || "development")
+  DB = Sequel.connect(db_config)
+end
 
 DB.extension :pg_json
 DB.extension :pagination
