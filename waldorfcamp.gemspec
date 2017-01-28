@@ -13,27 +13,4 @@ Gem::Specification.new do |gem|
 
   gem.files         = Dir["README.md", "lib/**/*"]
   gem.require_path  = "lib"
-
-  # Web
-  gem.add_dependency "roda"
-  gem.add_dependency "roda-symbolized_params"
-  gem.add_dependency "yaks"
-  gem.add_dependency "puma"
-  gem.add_dependency "rack-cors"
-
-  # Database
-  gem.add_dependency "sequel"
-  gem.add_dependency "pg"
-
-  # Photos
-  gem.add_dependency "cloudinary"
-  gem.add_dependency "dotenv"
-
-  # Development
-  gem.add_dependency "rake"
-
-  # Testing
-  gem.add_development_dependency "minitest"
-  gem.add_development_dependency "minitest-hooks"
-  gem.add_development_dependency "rack-test"
 end
