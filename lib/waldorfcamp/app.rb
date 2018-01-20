@@ -31,12 +31,11 @@ module Waldorfcamp
         photos = Photo
           .newest
           .tagged_with(tags)
-          .paginate(page_number, page_size)
 
-        json = Serializer.call(photos)
+        json = Serializer.call(photos.paginate(page_number, page_size))
 
         JSON.parse(json)
-          .tap { |result| result.merge!(meta: { total: Photo.count }) }
+          .tap { |result| result.merge!(meta: { total: photos.count }) }
           .to_json
       end
     end

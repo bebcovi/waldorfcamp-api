@@ -45,8 +45,9 @@ class AppTest < Minitest::Test
   end
 
   def test_count
-    get "/photos", page: 1, perPage: 25
+    get "/photos", page: 1, perPage: 25, tags: "workshop"
 
-    assert_operator body["meta"]["total"], :>, 500
+    assert_operator body["meta"]["total"], :>, 1
+    assert_operator body["meta"]["total"], :<, Waldorfcamp::Photo.count
   end
 end
