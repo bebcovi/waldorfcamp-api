@@ -3,8 +3,6 @@ require "yaks"
 
 module Waldorfcamp
   class Serializer
-    CLASSES = [Hash, Array, Sequel::Dataset, Sequel::Model]
-
     def self.call(object)
       new.serialize(object)
     end

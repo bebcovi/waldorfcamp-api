@@ -1,6 +1,7 @@
 require "roda"
 require "sequel"
 require "yaml"
+require "json"
 
 if ENV["RACK_ENV"] == "production"
   DB = Sequel.connect(ENV.fetch("DATABASE_URL"))
@@ -18,7 +19,6 @@ require "waldorfcamp/serializer"
 
 module Waldorfcamp
   class App < Roda
-    plugin :json, classes: Serializer::CLASSES, serializer: Serializer
     plugin :symbolized_params
     plugin :default_headers, "Access-Control-Allow-Origin"=>"*"
 
@@ -28,7 +28,16 @@ module Waldorfcamp
         page_size   = Integer(params.fetch(:perPage))
         tags        = params[:tags].to_s.split(",")
 
-        Photo.newest.tagged_with(tags).paginate(page_number, page_size)
+        photos = Photo
+          .newest
+          .tagged_with(tags)
+          .paginate(page_number, page_size)
+
+        json = Serializer.call(photos)
+
+        JSON.parse(json)
+          .tap { |result| result.merge!(meta: { total: Photo.count }) }
+          .to_json
       end
     end
   end

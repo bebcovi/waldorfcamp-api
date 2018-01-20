@@ -1,7 +1,6 @@
 require "test_helper"
 require "rack/test"
 require "json"
-require "pry"
 
 class AppTest < Minitest::Test
   include Rack::Test::Methods
@@ -43,5 +42,11 @@ class AppTest < Minitest::Test
 
     get "/photos", page: 1, perPage: 25, tags: "foo"
     assert_empty body["data"]
+  end
+
+  def test_count
+    get "/photos", page: 1, perPage: 25
+
+    assert_operator body["meta"]["total"], :>, 500
   end
 end
